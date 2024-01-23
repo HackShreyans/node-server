@@ -1,0 +1,10 @@
+
+/node_module
+docker-compose.yml
+.gitignore
+.env
+passphrase.txt
+logs/
+.git
+*.md
+.cache
