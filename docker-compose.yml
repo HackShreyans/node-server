@@ -7,16 +7,21 @@ services:
     restart: always
     volumes:
       - mongo_db:/data/db
-
+    
   api:
     build: .
     ports:
       - "4000:4000"
+    volumes:
+      - .:/usr/src/app  
     environment:
       PORT: 4000
-      MONGODB_URI: mongodb://mongo_db:27017/mongo-setup
+      MONGODB_URI: mongodb://mongo_db:27017/mongo-setup 
+      SECRET_KEY: shreyansfromvaransiuttarpradesh
     depends_on:
       - mongo_db
+   
 
 volumes:
-  mongo_db:
+  mongo_db: {}
+      

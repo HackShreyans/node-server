@@ -2,7 +2,7 @@
 FROM node:16-alpine
 
 # Set the working directory inside the container
-WORKDIR /server-setup
+WORKDIR /usr/src/app
 
 # Copy both package.json and yarn.lock files into the container
 COPY package.json yarn.lock ./
@@ -17,4 +17,4 @@ COPY . .
 EXPOSE 4000
 
 # Specify the command to run on container start
-CMD ["node", "server"]
+CMD ["yarn", "dev"]

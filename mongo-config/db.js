@@ -1,23 +1,23 @@
-// db.js
 const mongoose = require('mongoose');
 require('dotenv').config();
 
-const URI = process.env.MONGODB_URL || 'mongodb://localhost:27017/mongo-setup';
+let URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/mongo-setup';
 
-// Use 'debugger' to pause execution for debugging
-debugger;
+// Check if running inside Docker or not
 
-mongoose.connect(URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
+
+console.log("Attempting to connect to MongoDB...");
+
+mongoose.connect(URI,{
+    useUnifiedTopology:true,
+    useNewUrlParser:true
+}).then(()=>{
+    console.log("connected mongodb");
+}).catch(err=>{
+    console.log(err)
 })
-  .then(() => {
-    console.log('Connected to MongoDB');
-  })
-  .catch((err) => {
-    // Use 'debugger' here if you want to inspect the error
-    debugger;
-    console.error('Error connecting to MongoDB:', err);
-  });
+
+// Listen for the MongoDB connection events
+
 
 module.exports = mongoose;
